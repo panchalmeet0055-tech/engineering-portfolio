@@ -406,7 +406,7 @@ const EngineeringPortfolio = () => {
       {/* Experience & Education */}
       <section id="experience" className="section-spacing bg-bg-alt relative">
         <div className="container mx-auto max-w-[1600px] px-6 lg:px-20">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-10">
             <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
               Mission <br /><span className="text-accent">Log</span>
             </h3>
