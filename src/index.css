@@ -34,8 +34,8 @@
   --accent-rgb: 0, 242, 255;
   /* Kinetic Cyan */
   --accent-glow: rgba(var(--accent-rgb), 0.5);
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --text-primary: #f8fafc;
+  --text-secondary: #a1a1aa;
   --border: rgba(255, 255, 255, 0.08);
   --hud-border: rgba(0, 242, 255, 0.3);
 }
