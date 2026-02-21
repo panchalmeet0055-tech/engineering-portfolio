@@ -306,7 +306,7 @@ const EngineeringPortfolio = () => {
               <span className="text-accent text-glow">Engineer</span>
             </h1>
 
-            <p className="max-w-2xl text-content-alt text-lg md:text-2xl font-medium leading-relaxed mb-10 md:mb-16 opacity-90">
+            <p className="max-w-2xl text-white/80 text-lg md:text-2xl font-medium leading-relaxed mb-10 md:mb-16">
               Final-year Electronics and Telecommunication Engineering student specializing in embedded systems,
               robotics, and wireless communication applications.
             </p>
@@ -342,7 +342,7 @@ const EngineeringPortfolio = () => {
               <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-12 leading-none">
                 The <br /><span className="text-accent">Protocol</span>
               </h2>
-              <div className="space-y-6 md:space-y-10 text-lg md:text-xl text-content-alt font-medium max-w-lg leading-relaxed text-glow opacity-90">
+              <div className="space-y-6 md:space-y-10 text-lg md:text-xl text-white/80 font-medium max-w-lg leading-relaxed">
                 <p>
                   Final-year Electronics and Telecommunication Engineering student with working knowledge of embedded systems, robotics, and wireless communication.
                 </p>
@@ -510,7 +510,7 @@ const EngineeringPortfolio = () => {
                   </div>
 
                   <h4 className="text-2xl font-black mb-4 uppercase tracking-tight leading-tight">{proj.title}</h4>
-                  <p className="text-content-alt font-medium leading-relaxed mb-10 flex-grow text-sm opacity-90">{proj.desc}</p>
+                  <p className="text-white/70 font-medium leading-relaxed mb-10 flex-grow text-sm">{proj.desc}</p>
 
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {proj.tech.map(t => (
