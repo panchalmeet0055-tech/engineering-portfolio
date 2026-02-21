@@ -353,8 +353,8 @@ const EngineeringPortfolio = () => {
 
               <div className="mt-16 flex gap-12">
                 <div className="w-1/2 md:w-auto">
-                  <div className="text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase opacity-40 mb-2">Phase</div>
-                  <div className="text-2xl md:text-3xl font-black text-accent">04/04</div>
+                  <div className="text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase opacity-40 mb-2">Engineering Phase</div>
+                  <div className="text-2xl md:text-3xl font-black text-accent">08/08</div>
                 </div>
                 <div className="w-px h-12 bg-border-main hidden md:block" />
                 <div className="w-1/2 md:w-auto">
