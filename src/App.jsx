@@ -306,7 +306,7 @@ const EngineeringPortfolio = () => {
               <span className="text-accent text-glow">Engineer</span>
             </h1>
 
-            <p className="max-w-2xl text-white/90 text-lg md:text-2xl font-medium leading-relaxed mb-10 md:mb-16">
+            <p className="max-w-2xl text-accent text-glow text-lg md:text-2xl font-medium leading-relaxed mb-10 md:mb-16 opacity-90">
               Final-year Electronics and Telecommunication Engineering student specializing in embedded systems,
               robotics, and wireless communication applications.
             </p>
