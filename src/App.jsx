@@ -176,47 +176,63 @@ const EngineeringPortfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen transition-all duration-1000 relative bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-x-hidden">
+    <div className="min-h-screen transition-all duration-1000 relative bg-bg-main text-content-main overflow-x-hidden">
       {/* Background HUD Elements */}
       <div className="fixed inset-0 bg-circuit opacity-[0.05] pointer-events-none" />
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'glass-morphism py-4 border-b border-[var(--border)]' : 'py-10'}`}>
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-20 flex justify-between items-center">
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'glass-morphism py-3 border-b border-border-main' : 'py-6 md:py-10'}`}>
+        <div className="container mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-20 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex items-center gap-6"
+            className="flex flex-col items-start"
           >
-            <div className="text-sm font-mono tracking-[0.5em] text-accent font-bold">STATUS: ACTIVE</div>
-            <div className="h-px w-20 bg-accent/30 hidden md:block" />
-            <div className="text-2xl font-black tracking-widest uppercase">
-              Meet<span className="text-accent underline decoration-4 underline-offset-4">.Panchal</span>
+            <div className="text-[8px] md:text-xs font-mono tracking-[0.3em] md:tracking-[0.5em] text-accent font-bold mb-1">STATUS: ACTIVE</div>
+            <div className="text-xl md:text-2xl font-black tracking-widest uppercase">
+              Meet<span className="text-accent underline decoration-2 md:decoration-4 underline-offset-4">.Panchal</span>
             </div>
           </motion.div>
 
-          <div className="hidden lg:flex items-center gap-12">
-            {['About', 'Experience', 'Projects', 'Skills'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-[10px] font-black uppercase tracking-[0.3em] hover:text-accent transition-all relative group"
+          <div className="flex items-center gap-2 sm:gap-6 lg:gap-12">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-12">
+              {['About', 'Experience', 'Projects', 'Skills'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-[10px] font-black uppercase tracking-[0.3em] hover:text-accent transition-all relative group"
+                >
+                  {item}
+                  <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
+                </a>
+              ))}
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 flex items-center justify-center border border-accent/30 rounded-full hover:bg-accent/10 transition-all group"
               >
-                {item}
-                <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
-            <button
-              onClick={toggleTheme}
-              className="w-10 h-10 flex items-center justify-center border border-accent/30 rounded-full hover:bg-accent/10 transition-all group"
-            >
-              {theme === 'dark' ? <Sun size={16} className="text-accent" /> : <Moon size={16} className="text-[var(--text-secondary)]" />}
-            </button>
-          </div>
+                {theme === 'dark' ? <Sun size={18} className="text-accent" /> : <Moon size={18} className="text-content-alt" />}
+              </button>
+            </div>
 
-          <button className="lg:hidden p-2 text-accent" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle Theme"
+                className="w-10 h-10 flex items-center justify-center border border-accent/40 bg-accent/5 rounded-full text-accent shadow-sm active:scale-90 transition-transform"
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button
+                className="w-10 h-10 flex items-center justify-center border border-accent/40 bg-accent/5 rounded-full text-accent active:scale-90 transition-transform"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Open Menu"
+              >
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
         </div>
       </nav>
 
@@ -226,9 +242,32 @@ const EngineeringPortfolio = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 z-40 bg-[var(--bg-primary)] p-10 lg:hidden flex flex-col justify-center"
+            className="fixed inset-0 z-[150] bg-bg-main lg:hidden flex flex-col p-6 sm:p-10 border-l border-border-main"
           >
-            <div className="flex flex-col gap-10">
+            <div className="flex justify-between items-center mb-16">
+              <div className="text-xl font-black tracking-widest uppercase">
+                Meet<span className="text-accent underline decoration-2 underline-offset-4">.Panchal</span>
+              </div>
+              <button
+                className="w-12 h-12 flex items-center justify-center border border-accent/40 rounded-full text-accent"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-6 sm:gap-10">
+              <div className="flex items-center justify-between py-4 border-b border-border-main/20">
+                <span className="text-[10px] font-mono tracking-[0.4em] opacity-40 uppercase">System Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-3 px-6 py-3 border border-accent/40 rounded-full text-accent font-black text-xs tracking-widest uppercase bg-accent/5"
+                >
+                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                  {theme.toUpperCase()} MODE
+                </button>
+              </div>
+
               {['About', 'Experience', 'Projects', 'Skills'].map((item, i) => (
                 <motion.a
                   key={item}
@@ -237,7 +276,7 @@ const EngineeringPortfolio = () => {
                   transition={{ delay: i * 0.1 }}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-5xl font-black uppercase tracking-tighter hover:text-accent"
+                  className="text-4xl sm:text-5xl font-black uppercase tracking-tighter hover:text-accent transition-colors"
                 >
                   {item}
                 </motion.a>
@@ -256,31 +295,31 @@ const EngineeringPortfolio = () => {
             transition={{ duration: 1 }}
             className="text-center md:text-left"
           >
-            <div className="flex flex-col md:flex-row items-baseline gap-4 mb-8 justify-center md:justify-start">
-              <span className="text-accent font-mono text-xs font-bold tracking-[0.5em] uppercase text-glow">ELECTRONICS AND TELECOMMUNICATION ENGINEER</span>
-              <div className="h-px w-24 bg-accent/50 hidden md:block" />
-              <span className="text-xs font-mono opacity-40">LON: 72.8777° E | LAT: 19.0760° N</span>
+            <div className="flex flex-col lg:flex-row items-center lg:items-baseline gap-4 mb-6 md:mb-8 justify-center md:justify-start">
+              <span className="text-accent font-mono text-[10px] md:text-xs font-bold tracking-[0.3em] md:tracking-[0.5em] uppercase text-glow text-center md:text-left">ELECTRONICS AND TELECOMMUNICATION ENGINEER</span>
+              <div className="h-px w-24 bg-accent/50 hidden lg:block" />
+              <span className="text-[10px] md:text-xs font-mono opacity-40">LON: 72.8777° E | LAT: 19.0760° N</span>
             </div>
 
-            <h1 className="text-7xl md:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase mb-12">
+            <h1 className="text-5xl md:text-7xl lg:text-[10rem] font-black leading-[0.9] md:leading-[0.8] tracking-tighter uppercase mb-8 md:mb-12">
               EXTC <br />
               <span className="text-accent text-glow">Engineer</span>
             </h1>
 
-            <p className="max-w-2xl text-text-secondary text-xl md:text-2xl font-medium leading-relaxed mb-16 opacity-80">
+            <p className="max-w-2xl text-content-alt text-lg md:text-2xl font-medium leading-relaxed mb-10 md:mb-16 opacity-90">
               Final-year Electronics and Telecommunication Engineering student specializing in embedded systems,
               robotics, and wireless communication applications.
             </p>
 
-            <div className="flex flex-wrap gap-8 justify-center md:justify-start">
-              <a href="#projects" className="group relative px-12 py-5 overflow-hidden">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center md:justify-start">
+              <a href="#projects" className="group relative px-8 md:px-12 py-4 md:py-5 overflow-hidden text-center">
                 <div className="absolute inset-0 bg-accent transition-transform duration-500 group-hover:scale-105" />
-                <span className="relative z-10 text-xs font-black uppercase tracking-[0.4em] text-[var(--bg-primary)] flex items-center gap-3">
+                <span className="relative z-10 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-bg-main flex items-center justify-center gap-3">
                   PROJECTS <ChevronRight size={14} />
                 </span>
               </a>
-              <a href="https://cricket-score-tracker-qtf4.onrender.com/" target="_blank" rel="noopener noreferrer" className="group px-12 py-5 border-2 border-[var(--border)] hover:border-accent transition-all relative overflow-hidden">
-                <span className="text-xs font-black uppercase tracking-[0.4em]">LATEST PROJECT</span>
+              <a href="https://cricket-score-tracker-qtf4.onrender.com/" target="_blank" rel="noopener noreferrer" className="group px-8 md:px-12 py-4 md:py-5 border-2 border-border-main hover:border-accent transition-all relative overflow-hidden text-center">
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">LATEST PROJECT</span>
               </a>
             </div>
           </motion.div>
@@ -297,13 +336,13 @@ const EngineeringPortfolio = () => {
 
       {/* About Section */}
       <section id="about" className="section-spacing">
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-20">
-          <div className="grid lg:grid-cols-2 gap-32 items-center">
+        <div className="container mx-auto max-w-[1600px] px-6 lg:px-20">
+          <div className="grid lg:grid-cols-2 gap-16 lg:grid-cols-2 lg:gap-32 items-center">
             <div className="relative">
               <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-12 leading-none">
                 The <br /><span className="text-accent">Protocol</span>
               </h2>
-              <div className="space-y-10 text-xl text-text-secondary font-medium max-w-lg leading-relaxed text-glow">
+              <div className="space-y-6 md:space-y-10 text-lg md:text-xl text-content-alt font-medium max-w-lg leading-relaxed text-glow opacity-90">
                 <p>
                   Final-year Electronics and Telecommunication Engineering student with working knowledge of embedded systems, robotics, and wireless communication.
                 </p>
@@ -313,14 +352,14 @@ const EngineeringPortfolio = () => {
               </div>
 
               <div className="mt-16 flex gap-12">
-                <div>
-                  <div className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 mb-2">Phase</div>
-                  <div className="text-3xl font-black text-accent">04/04</div>
+                <div className="w-1/2 md:w-auto">
+                  <div className="text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase opacity-40 mb-2">Phase</div>
+                  <div className="text-2xl md:text-3xl font-black text-accent">04/04</div>
                 </div>
-                <div className="w-px h-12 bg-[var(--border)]" />
-                <div>
-                  <div className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 mb-2">Target</div>
-                  <div className="text-3xl font-black text-accent">2026</div>
+                <div className="w-px h-12 bg-border-main hidden md:block" />
+                <div className="w-1/2 md:w-auto">
+                  <div className="text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase opacity-40 mb-2">Target</div>
+                  <div className="text-2xl md:text-3xl font-black text-accent">2026</div>
                 </div>
               </div>
             </div>
@@ -365,10 +404,10 @@ const EngineeringPortfolio = () => {
       </section>
 
       {/* Experience & Education */}
-      <section id="experience" className="section-spacing bg-[var(--bg-secondary)] relative">
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-20">
+      <section id="experience" className="section-spacing bg-bg-alt relative">
+        <div className="container mx-auto max-w-[1600px] px-6 lg:px-20">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-10">
-            <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+            <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
               Mission <br /><span className="text-accent">Log</span>
             </h3>
             <div className="text-right hidden md:block">
@@ -377,7 +416,7 @@ const EngineeringPortfolio = () => {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-32 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
             {/* Professional Column */}
             <div className="space-y-12">
               <h4 className="text-xs font-black uppercase tracking-[0.5em] opacity-40 mb-12 flex items-center gap-4">
@@ -444,15 +483,15 @@ const EngineeringPortfolio = () => {
       </section>
 
       <section id="projects" className="section-spacing">
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-20 flex flex-col items-center">
+        <div className="container mx-auto max-w-[1600px] px-6 lg:px-20 flex flex-col items-center">
           <div className="text-center mb-32">
-            <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-6">
-              The <span className="text-accent underline decoration-8 underline-offset-[12px]">Inventory</span>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6">
+              The <span className="text-accent underline decoration-4 md:decoration-8 underline-offset-[8px] md:underline-offset-[12px]">Inventory</span>
             </h2>
-            <p className="text-[10px] font-mono opacity-40 tracking-[0.8em]">HARDWARE_PROTOTYPES_V_4.0</p>
+            <p className="text-[8px] md:text-[10px] font-mono opacity-40 tracking-[0.4em] md:tracking-[0.8em]">HARDWARE_PROTOTYPES_V_4.0</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20 w-full">
             {projects.map((proj, i) => (
               <motion.div
                 key={i}
@@ -463,7 +502,7 @@ const EngineeringPortfolio = () => {
                 viewport={{ once: true }}
                 className="group relative w-full h-full"
               >
-                <div className="hud-border hud-border-tl hud-border-tr hud-border-bl hud-border-br p-10 glass-morphism h-full flex flex-col hover:border-accent hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.1)] transition-all duration-500 overflow-hidden bg-accent/2">
+                <div className="hud-border hud-border-tl hud-border-tr hud-border-bl hud-border-br p-6 md:p-10 glass-morphism h-full flex flex-col hover:border-accent hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.1)] transition-all duration-500 overflow-hidden bg-accent/2">
                   <div className="absolute top-0 right-0 p-4 opacity-5 text-7xl font-black select-none pointer-events-none group-hover:opacity-10 transition-opacity uppercase">{proj.id}</div>
 
                   <div className="w-14 h-14 bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-10 group-hover:bg-accent group-hover:text-[var(--bg-primary)] transition-all rounded-sm">
@@ -471,7 +510,7 @@ const EngineeringPortfolio = () => {
                   </div>
 
                   <h4 className="text-2xl font-black mb-4 uppercase tracking-tight leading-tight">{proj.title}</h4>
-                  <p className="text-text-secondary font-medium leading-relaxed mb-10 flex-grow text-sm opacity-80">{proj.desc}</p>
+                  <p className="text-content-alt font-medium leading-relaxed mb-10 flex-grow text-sm opacity-90">{proj.desc}</p>
 
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {proj.tech.map(t => (
@@ -486,14 +525,14 @@ const EngineeringPortfolio = () => {
       </section>
 
       {/* Footer Interface */}
-      <footer id="contact" className="py-32 bg-[var(--bg-secondary)] border-t border-[var(--border)] mt-32 relative overflow-hidden">
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-20">
+      <footer id="contact" className="py-20 md:py-32 bg-bg-alt border-t border-border-main mt-20 md:mt-32 relative overflow-hidden">
+        <div className="container mx-auto max-w-[1600px] px-6 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-32">
             <div className="flex flex-col items-start px-4">
               <motion.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="text-6xl md:text-8xl font-black leading-none uppercase tracking-tighter mb-12"
+                className="text-5xl md:text-8xl font-black leading-none uppercase tracking-tighter mb-8 md:mb-12"
               >
                 ROLL <br /><span className="text-accent">OUT.</span>
               </motion.h2>
@@ -501,7 +540,7 @@ const EngineeringPortfolio = () => {
               <div className="space-y-6">
                 <a href="mailto:Meet04panchal@gmail.com" className="flex items-center gap-4 group">
                   <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-[var(--bg-primary)] transition-all shadow-[0_0_15px_rgba(var(--accent-rgb),0.1)]"><Mail size={18} /></div>
-                  <span className="text-xl font-black tracking-tight group-hover:text-accent transition-colors underline decoration-2 underline-offset-8 font-mono">Meet04panchal@gmail.com</span>
+                  <span className="text-lg md:text-xl font-black tracking-tight group-hover:text-accent transition-colors underline decoration-2 underline-offset-8 font-mono break-all">Meet04panchal@gmail.com</span>
                 </a>
                 <a href="tel:+919869107055" className="flex items-center gap-4 group">
                   <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-[var(--bg-primary)] transition-all shadow-[0_0_15px_rgba(var(--accent-rgb),0.1)]"><Phone size={18} /></div>
@@ -514,9 +553,9 @@ const EngineeringPortfolio = () => {
                       className="hud-border hud-border-tr hud-border-bl p-4 glass-morphism hover:bg-accent/10 border-accent/10 hover:border-accent transition-all duration-500 group relative"
                     >
                       <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-accent/20 group-hover:border-accent group-hover:opacity-100 transition-all" />
-                      <div className="flex items-center gap-4">
-                        <div className="w-8 h-px bg-accent/20 group-hover:w-12 group-hover:bg-accent transition-all" />
-                        <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-50 group-hover:opacity-100 transition-all">{lang}</span>
+                      <div className="flex items-center gap-3 md:gap-4">
+                        <div className="w-6 md:w-8 h-px bg-accent/20 group-hover:w-12 group-hover:bg-accent transition-all" />
+                        <span className="text-[8px] md:text-[10px] font-mono tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-50 group-hover:opacity-100 transition-all">{lang}</span>
                       </div>
                     </div>
                   ))}
@@ -525,9 +564,9 @@ const EngineeringPortfolio = () => {
             </div>
 
             <div className="flex flex-col justify-end lg:items-end px-4">
-              <div className="flex gap-6 mb-20">
-                <a href="https://www.linkedin.com/in/meetpanchal04" target="_blank" rel="noopener noreferrer" className="w-20 h-20 glass-morphism border border-[var(--border)] rounded flex items-center justify-center hover:bg-accent hover:text-[var(--bg-primary)] transition-all shadow-xl hover:shadow-accent/20"><Linkedin size={32} /></a>
-                <a href="https://github.com/panchalmeet0055-tech" target="_blank" rel="noopener noreferrer" className="w-20 h-20 glass-morphism border border-[var(--border)] rounded flex items-center justify-center hover:bg-accent hover:text-[var(--bg-primary)] transition-all shadow-xl hover:shadow-accent/20"><Github size={32} /></a>
+              <div className="flex gap-4 md:gap-6 mb-12 md:mb-20">
+                <a href="https://www.linkedin.com/in/meetpanchal04" target="_blank" rel="noopener noreferrer" className="w-16 h-16 md:w-20 md:h-20 glass-morphism border border-border-main rounded flex items-center justify-center hover:bg-accent hover:text-bg-main transition-all shadow-xl hover:shadow-accent/20"><Linkedin size={28} /></a>
+                <a href="https://github.com/panchalmeet0055-tech" target="_blank" rel="noopener noreferrer" className="w-16 h-16 md:w-20 md:h-20 glass-morphism border border-border-main rounded flex items-center justify-center hover:bg-accent hover:text-bg-main transition-all shadow-xl hover:shadow-accent/20"><Github size={28} /></a>
               </div>
 
               <div className="text-right">

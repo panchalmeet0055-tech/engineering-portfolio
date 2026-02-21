@@ -2,6 +2,12 @@
 
 @theme {
   --color-accent: var(--accent);
+  --color-bg-main: var(--bg-primary);
+  --color-bg-alt: var(--bg-secondary);
+  --color-content-main: var(--text-primary);
+  --color-content-alt: var(--text-secondary);
+  --color-border-main: var(--border);
+  --color-glow: var(--accent-glow);
 }
 
 :root {
@@ -45,14 +51,6 @@
 
 .border-accent {
   border-color: var(--accent);
-}
-
-.bg-primary {
-  background-color: var(--bg-primary);
-}
-
-.bg-secondary {
-  background-color: var(--bg-secondary);
 }
 
 * {
