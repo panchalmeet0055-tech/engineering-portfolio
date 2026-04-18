@@ -342,7 +342,7 @@ const EngineeringPortfolio = () => {
               <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-12 leading-none">
                 The <br /><span className="text-accent">Protocol</span>
               </h2>
-              <div className="space-y-6 md:space-y-10 text-lg md:text-xl text-white/90 font-medium max-w-lg leading-relaxed">
+              <div className="space-y-6 md:space-y-10 text-lg md:text-xl font-medium max-w-lg leading-relaxed opacity-90">
                 <p>
                   Final-year Electronics and Telecommunication Engineering student with working knowledge of embedded systems, robotics, and wireless communication.
                 </p>
@@ -510,7 +510,7 @@ const EngineeringPortfolio = () => {
                   </div>
 
                   <h4 className="text-2xl font-black mb-4 uppercase tracking-tight leading-tight">{proj.title}</h4>
-                  <p className="text-white/80 font-medium leading-relaxed mb-10 flex-grow text-sm">{proj.desc}</p>
+                  <p className="opacity-80 font-medium leading-relaxed mb-10 flex-grow text-sm">{proj.desc}</p>
 
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {proj.tech.map(t => (
@@ -542,10 +542,7 @@ const EngineeringPortfolio = () => {
                   <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-[var(--bg-primary)] transition-all shadow-[0_0_15px_rgba(var(--accent-rgb),0.1)]"><Mail size={18} /></div>
                   <span className="text-lg md:text-xl font-black tracking-tight group-hover:text-accent transition-colors underline decoration-2 underline-offset-8 font-mono break-all">Meet04panchal@gmail.com</span>
                 </a>
-                <a href="tel:+919869107055" className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-[var(--bg-primary)] transition-all shadow-[0_0_15px_rgba(var(--accent-rgb),0.1)]"><Phone size={18} /></div>
-                  <span className="text-xl font-black tracking-tight group-hover:text-accent transition-colors"> +91 9869107055</span>
-                </a>
+
                 <div className="grid grid-cols-2 gap-4 w-full max-w-lg mt-10">
                   {['English', 'Hindi', 'Marathi', 'Gujarati'].map((lang) => (
                     <div
